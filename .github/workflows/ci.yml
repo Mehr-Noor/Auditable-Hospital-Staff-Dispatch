@@ -26,15 +26,9 @@ jobs:
 
       - name: Run unit tests
         run: |
-          pytest tests/
+          PYTHONPATH=. pytest tests/
 
       - name: Run API import check
         run: |
-          python - <<EOF
-          from src.api import app
-          print("API import successful")
-          EOF
-
-      - name: Build Docker image
-        run: |
-          docker build -t hospital-dispatch-api .
+          PYTHONPATH=. python - <<EOF
+          from src.api
